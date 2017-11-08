@@ -4,8 +4,9 @@
   "description": "Base application setup for creating a new react project.",
   "main": "server/index.js",
   "scripts": {
-    "build": "npm run less && webpack -w",
-    "start": "node server/index.js",
+    "client": "npm run less && webpack -w",
+    "server": "node server/index.js",
+    "start": "concurrently \"npm run server\" \"npm run client\"",
     "less": "lessc src/css/style.less dist/css/style.css",
     "lint": "eslint .",
     "test": "npm run build && mocha test/.setup.js test/*.spec.js"
@@ -15,6 +16,7 @@
     "babel-loader": "^7.1.1",
     "bluebird": "^3.5.0",
     "chai": "^3.5.0",
+    "concurrently": "^3.5.0",
     "express": "^4.15.3",
     "json-loader": "^0.5.4",
     "lodash": "^4.15.0",
@@ -27,6 +29,7 @@
     "react-redux": "^5.0.6",
     "redux": "^3.7.2",
     "redux-devtools": "^3.4.0",
+    "redux-thunk": "^2.2.0",
     "serve-favicon": "^2.0.1",
     "webpack": "^3.6.0"
   },
