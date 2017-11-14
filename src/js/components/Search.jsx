@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { updateCity } from '../actions/cityActions';
+import { updateCity, searchHistory } from '../actions/cityActions';
 
 class Search extends React.Component {
   constructor(props) {
@@ -10,16 +10,18 @@ class Search extends React.Component {
     };
     this.handleSearchInput = this.handleSearchInput.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
-    this.handleCityButton = this.handleCityButton.bind(this);
+    // this.handleCityButton = this.handleCityButton.bind(this);
   }
   handleSearch(e) {
-    this.props.updateCity(this.state.city);
-    this.handleSearchInput(e);
+    const cityValue = e.target.value || this.state.city;
+    this.props.updateCity(cityValue);
+    this.props.searchHistory(cityValue);
   }
 
-  handleCityButton(e) {
-    this.props.updateCity(e.target.value);
-  }
+  // handleCityButton(e) {
+  //   this.props.updateCity(e.target.value);
+  //   this.props.searchHistory(e.target.value);
+  // }
 
   handleSearchInput(e) {
     this.setState({
@@ -44,7 +46,7 @@ class Search extends React.Component {
             className="btn btn-primary mr-3"
             value={city}
             key={city}
-            onClick={this.handleCityButton}
+            onClick={this.handleSearch}
           >
             {city}
           </button>
@@ -69,4 +71,4 @@ class Search extends React.Component {
   }
 }
 
-export default connect(null, { updateCity })(Search);
+export default connect(null, { updateCity, searchHistory })(Search);

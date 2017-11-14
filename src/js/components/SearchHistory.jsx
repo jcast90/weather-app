@@ -8,19 +8,21 @@ class SearchHistory extends React.Component {
   }
 
   render() {
-    const city = this.props.city;
-    console.log(city.history);
+    const city = this.props.history;
+    const counter = 0;
     return (
       <div className="card">
         <h2 className="card-header">Search History</h2>
         <table className="table table-striped">
           <tbody>
-            {city.history.map(item => (
-              <tr>
-                <td>{item.name}</td>
-                <td>{item.dt}</td>
-              </tr>
-            ))}
+            {city
+              .map((item, index) => (
+                <tr key={index}>
+                  <td>{item.name}</td>
+                  <td>{item.time}</td>
+                </tr>
+              ))
+              .reverse()}
           </tbody>
         </table>
       </div>
@@ -28,7 +30,7 @@ class SearchHistory extends React.Component {
   }
 }
 
-const mapStoreToProps = ({ city }) => ({
-  city
-});
+const mapStoreToProps = function(store) {
+  return { history: store.city.history };
+};
 export default connect(mapStoreToProps)(SearchHistory);

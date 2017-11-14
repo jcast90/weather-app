@@ -8,18 +8,22 @@ class CityInfo extends React.Component {
 
   render() {
     const city = this.props.city;
+    const icon = city.weather[0].icon;
     return (
       <div className="card">
         <h2 className="card-header">City Info</h2>
 
         <div className="card-body">
           <div className="card-title">
-            <h2>{city.name}</h2>
-            <h3>
-              {city.weather.main}
-              {city.weather.description}
+            <img src={`https://openweathermap.org/img/w/${icon}.png`} />
+            <p className="h4 display-6">{city.name}</p>
+
+            <p className="h6 display-6">{city.weather[0].main}</p>
+            <p className="h6 display-6">{city.weather[0].description}</p>
+            <p className="h6 display-6">
               Lat/Long: {city.coord.lat},{city.coord.lon}
-            </h3>
+            </p>
+
             <hr />
           </div>
           <div className="row">

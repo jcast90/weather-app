@@ -2,7 +2,7 @@ const defaultState = {
   fetching: false,
   history: [],
   coord: {},
-  weather: [],
+  weather: [{}],
   main: {},
   wind: {},
   clouds: {},
@@ -19,11 +19,9 @@ export default function CityReducer(state = defaultState, { type, payload }) {
         fetching: true
       };
     case 'FETCH_CITY_SUCCESS': {
-      const { name, dt } = payload;
       return {
         ...state,
         ...payload,
-        history: [{ name, dt }],
         fetching: false
       };
     }
@@ -32,6 +30,11 @@ export default function CityReducer(state = defaultState, { type, payload }) {
         ...state,
         err: payload,
         fetching: false
+      };
+    case 'UPDATE_HISTORY':
+      return {
+        ...state,
+        history: [...state.history, payload]
       };
     default:
       return state;

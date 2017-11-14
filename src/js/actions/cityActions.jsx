@@ -28,3 +28,15 @@ export const updateCity = cityName => {
       });
   };
 };
+
+export const searchHistory = history => {
+  return function(dispatch) {
+    dispatch({
+      type: 'UPDATE_HISTORY',
+      payload: {
+        name: history,
+        time: new Date().toString()
+      }
+    });
+  };
+};
