@@ -35,7 +35,8 @@ class Search extends React.Component {
       'New York',
       'Washington D.C.',
       'London',
-      'Tokyo'
+      'Tokyo',
+      'Birmingham'
     ];
 
     return (

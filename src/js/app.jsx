@@ -12,7 +12,7 @@ export default class App extends React.Component {
       'London',
       'Tokyo'
     ];
-    const test = 'test';
+    
     return (
       <div className="container">
         <div className="jumbotron">
