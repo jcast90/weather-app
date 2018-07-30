@@ -2,12 +2,12 @@ import axios from 'axios';
 // Action Creators
 
 export const updateCity = cityName => {
-  return function(dispatch) {
+  return function (dispatch) {
     dispatch({
       type: 'FETCH_CITY'
     });
     axios
-      .get('http://api.openweathermap.org/data/2.5/weather', {
+      .get('https://api.openweathermap.org/data/2.5/weather', {
         params: {
           q: cityName,
           APPID: 'acfe0e277c8db9b729ad7dcb862c02c3',
@@ -30,7 +30,7 @@ export const updateCity = cityName => {
 };
 
 export const searchHistory = history => {
-  return function(dispatch) {
+  return function (dispatch) {
     dispatch({
       type: 'UPDATE_HISTORY',
       payload: {
